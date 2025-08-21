@@ -1,0 +1,55 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# PIDs / runtime
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Build output / temp
+build/
+dist/
+tmp/
+temp/
+
+# Environment
+.env
+.env.local
+.env.*
+!.env.example
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Caches
+.eslintcache
+.npm/
+.cache/
+.parcel-cache/
+
+# Lockfiles (ignored in this repo)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Docker (local overrides)
+docker-compose.override.yml
