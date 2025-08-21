@@ -27,8 +27,34 @@ const publicBaseUrl = process.env.PUBLIC_BASE_URL; // optional explicit base URL
 
 // OpenAI client
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-const preferredModel = process.env.OPENAI_MODEL || "gpt-5"; // per requirement
 const fallbackModel = process.env.OPENAI_FALLBACK_MODEL || "gpt-4o-mini";
+
+// Model name loading (prefer file path from env, then env var, then default)
+const openaiModelFileEnv = process.env.OPENAI_MODEL_FILE || null;
+const envPreferredModel = process.env.OPENAI_MODEL || null;
+
+function resolveConfigPath(maybeRelativePath) {
+  if (!maybeRelativePath) return null;
+  return path.isAbsolute(maybeRelativePath)
+    ? maybeRelativePath
+    : path.join(__dirname, "..", maybeRelativePath);
+}
+
+async function readPreferredModel() {
+  const defaultModel = "gpt-5";
+  const modelPath = resolveConfigPath(openaiModelFileEnv);
+  if (modelPath) {
+    try {
+      const txt = await fs.readFile(modelPath, "utf8");
+      const m = (txt || "").trim();
+      if (m) return m;
+    } catch (_) {
+      // ignore and fallback
+    }
+  }
+  if (envPreferredModel && envPreferredModel.trim()) return envPreferredModel.trim();
+  return defaultModel;
+}
 
 // Prompt loading (externalized to 10_Assets/propmt)
 const promptFileEnv = process.env.PROMPT_FILE;
@@ -76,6 +102,7 @@ app.post("/api/rewrite", async (req, res) => {
       return result;
     }
 
+    const preferredModel = await readPreferredModel();
     let result;
     try {
       result = await createCompletion(preferredModel, systemPrompt);

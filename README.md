@@ -11,7 +11,8 @@
 cp .env.sample .env
 ```
 必須: `OPENAI_API_KEY`（OpenAI の API キー）
-任意: `PROMPT_FILE`（外部プロンプトのパス。既定: `/app/10_Assets/system_rewrite_ja.txt`）
+任意: `PROMPT_FILE`（外部プロンプトのパス。既定: `/app/AI_setting/system_prompt.md`）
+任意: `OPENAI_MODEL_FILE`（モデル名の外部ファイル。既定: `AI_setting/model_name.txt`）
 
 2) ビルド & 起動
 ```
@@ -28,6 +29,7 @@ docker compose up -d --build
 #### 備考
 - 開発用の最小構成です。Outlook on the web では HTTPS が推奨/必須のため、必要に応じてリバースプロキシ等で TLS を付与してください。
 - マニフェストは `/manifest.xml` をサーバ側で動的生成し、`PUBLIC_BASE_URL` を反映します。
-- プロンプトは `10_Assets/system_rewrite_ja.txt` にあります。変更したい場合は同ファイルを編集するか、`PROMPT_FILE` で差し替えてください。
+- プロンプトは `AI_setting/system_prompt.md` にあります。変更したい場合は同ファイルを編集するか、`PROMPT_FILE` で差し替えてください。
+- モデル名は `AI_setting/model_name.txt` に記述します。`.env` で `OPENAI_MODEL_FILE` か `OPENAI_MODEL` を設定してもOK（ファイルが優先）。
 
 

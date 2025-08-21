@@ -9,6 +9,7 @@ services:
       - PORT=3000
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-5}
+      - OPENAI_MODEL_FILE=${OPENAI_MODEL_FILE:-AI_setting/model_name.txt}
       - OPENAI_FALLBACK_MODEL=${OPENAI_FALLBACK_MODEL:-gpt-4o-mini}
       - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://localhost:3000}
       - PROMPT_FILE=${PROMPT_FILE:-/app/AI_setting/system_prompt.md}
