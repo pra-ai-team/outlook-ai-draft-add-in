@@ -8,8 +8,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Pragmateches</ProviderName>
   <DefaultLocale>ja-JP</DefaultLocale>
-  <DisplayName DefaultValue="ビジネス文面リライト" />
-  <Description DefaultValue="下書きをビジネス向けにリライトします" />
+  <DisplayName DefaultValue="&#12499;&#12472;&#12493;&#12473;&#25991;&#38754;&#12522;&#12521;&#12452;&#12488;" />
+  <Description DefaultValue="&#19979;&#26360;&#12365;&#12434;&#12499;&#12472;&#12493;&#12473;&#21521;&#12369;&#12395;&#12522;&#12521;&#12452;&#12488;&#12375;&#12414;&#12377;" />
   <IconUrl DefaultValue="http://localhost:3000/web/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="http://localhost:3000/web/assets/icon-80.png" />
   <SupportUrl DefaultValue="http://localhost:3000" />
@@ -37,33 +37,32 @@
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit" />
   </Rule>
 
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" Version="1.0">
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides">
     <Hosts>
       <Host xsi:type="MailHost">
-        <Runtimes>
-          <Runtime resid="functionfile" lifetime="long" />
-        </Runtimes>
-        <ExtensionPoint xsi:type="MessageComposeCommandSurface">
-          <OfficeTab id="TabDefault">
-            <Group id="grpCompose" label="リライト">
-              <Control xsi:type="Button" id="btnRewrite">
-                <Label resid="btnRewriteLabel" />
-                <Supertip>
-                  <Title resid="btnRewriteLabel" />
-                  <Description resid="btnRewriteDesc" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="icon16" />
-                  <bt:Image size="32" resid="icon32" />
-                  <bt:Image size="80" resid="icon80" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>rewriteToBusiness</FunctionName>
-                </Action>
-              </Control>
-            </Group>
-          </OfficeTab>
-        </ExtensionPoint>
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="grpCompose" label="&#12522;&#12521;&#12452;&#12488;">
+                <Control xsi:type="Button" id="btnRewrite">
+                  <Label resid="btnRewriteLabel" />
+                  <Supertip>
+                    <Title resid="btnRewriteLabel" />
+                    <Description resid="btnRewriteDesc" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>rewriteToBusiness</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
       </Host>
     </Hosts>
     <Resources>
@@ -76,10 +75,10 @@
         <bt:Url id="functionfile" DefaultValue="http://localhost:3000/web/function-file.html" />
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="btnRewriteLabel" DefaultValue="ビジネスに整える" />
+        <bt:String id="btnRewriteLabel" DefaultValue="&#12499;&#12472;&#12493;&#12473;&#12395;&#25972;&#12360;&#12427;" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="btnRewriteDesc" DefaultValue="下書きを丁寧で読みやすいビジネス文にリライトします" />
+        <bt:String id="btnRewriteDesc" DefaultValue="&#19979;&#26360;&#12365;&#12434;&#19969;&#23500;&#12391;&#35501;&#12415;&#12420;&#12377;&#12356;&#12499;&#12472;&#12493;&#12473;&#25991;&#12395;&#12522;&#12521;&#12452;&#12488;&#12375;&#12414;&#12377;" />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
